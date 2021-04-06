@@ -22,11 +22,11 @@ public class list_kontak extends AppCompatActivity implements
     private ArrayAdapter<String> stringArrayAdapter;
     private  ListViewAdapter adapter;
     String nama;
-    private  SearchView svCari;
+    private  SearchView Cari;
     String[] listNama;
     public static ArrayList<ClassNama> classNamaArrayList = new ArrayList<ClassNama>();
     Bundle b = new Bundle();
-    Intent i;
+    Intent intent;
 
 
     @Override
@@ -41,15 +41,15 @@ public class list_kontak extends AppCompatActivity implements
         classNamaArrayList = new ArrayList<>();
         int i = 0;
         while (true){
-            String[] strArr = listNama;
-            if (i< strArr.length){
-                classNamaArrayList.add(new ClassNama(strArr[i]));
+            String[] StringArr = listNama;
+            if (i< StringArr.length){
+                classNamaArrayList.add(new ClassNama(StringArr[i]));
                 i++;
             } else {
                 adapter = new ListViewAdapter(this);
                 list.setAdapter(adapter);
                 SearchView searchView = findViewById(R.id.Search);
-                svCari = searchView;
+                Cari = searchView;
                 searchView.setOnQueryTextListener(this);
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -71,9 +71,9 @@ public class list_kontak extends AppCompatActivity implements
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.mnview:
-                i = new Intent(getApplicationContext(),detail_kontak.class);
-                i.putExtras(b);
-                startActivity(i);
+                intent = new Intent(getApplicationContext(),detail_kontak.class);
+                intent.putExtras(b);
+                startActivity(intent);
                 break;
             case R.id.mnedit:
                 Toast.makeText(getApplicationContext(), detail_kontak.nomorhp,
